@@ -1,0 +1,28 @@
+name: CICD
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check code is push on git
+        run: echo "code is pushing"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use docker to build app
+        run: echo "Docker Build"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use docker exec
+        run: echo "Docker exec"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use aws to deploy app
+        run: echo "Deploy app on aws"
+
+        
