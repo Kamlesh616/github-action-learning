@@ -10,16 +10,19 @@ jobs:
       - name: check code is push on git
         run: echo "code is pushing"
   build:
+    needs: [code]
     runs-on: ubuntu-latest
     steps:
       - name: use docker to build app
         run: echo "Docker Build"
   test:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: use docker exec
         run: echo "Docker exec"
   deploy:
+    needs: [build , test]
     runs-on: ubuntu-latest
     steps:
       - name: use aws to deploy app
